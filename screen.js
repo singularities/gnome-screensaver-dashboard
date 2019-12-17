@@ -4,11 +4,8 @@ imports.gi.versions.Gtk = '3.0';
 imports.gi.versions.WebKit2 = '4.0';
 
 const GLib = imports.gi.GLib;
-const Gdk = imports.gi.Gdk;
 const Gtk = imports.gi.Gtk;
 const Webkit = imports.gi.WebKit2;
-
-const screen = Gdk.Screen.get_default()
 
 class HelloGNOME {
 
@@ -39,7 +36,9 @@ class HelloGNOME {
       type: Gtk.WindowType.TOPLEVEL });
 
       // Create a webview to show the web app
-      this._webView = new Webkit.WebView ();
+      this._webView = new Webkit.WebView();
+
+      this._webView.connect('close', this._close.bind(this))
 
       // Put the web app into the webview
       this._webView.load_uri (GLib.filename_to_uri (GLib.get_current_dir() +
@@ -52,6 +51,9 @@ class HelloGNOME {
       this._window.show_all();
     }
 
+    _close() {
+      this._window.destroy()
+    }
   };
 
   // Run the application
