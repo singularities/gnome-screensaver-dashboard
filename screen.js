@@ -4,8 +4,11 @@ imports.gi.versions.Gtk = '3.0';
 imports.gi.versions.WebKit2 = '4.0';
 
 const GLib = imports.gi.GLib;
+const Gdk = imports.gi.Gdk;
 const Gtk = imports.gi.Gtk;
 const Webkit = imports.gi.WebKit2;
+
+const screen = Gdk.Screen.get_default()
 
 class HelloGNOME {
 
@@ -20,7 +23,7 @@ class HelloGNOME {
 
   // Callback function for 'activate' signal presents windows when active
   _onActivate() {
-    this._window.present();
+    this._window.fullscreen();
   }
 
   // Callback function for 'startup' signal builds the UI
@@ -33,10 +36,7 @@ class HelloGNOME {
     // Create the application window
     this._window = new Gtk.ApplicationWindow({
       application: this.application,
-      title: 'Screen',
-      default_height: 200,
-      default_width: 400,
-      window_position: Gtk.WindowPosition.CENTER });
+      type: Gtk.WindowType.TOPLEVEL });
 
       // Create a webview to show the web app
       this._webView = new Webkit.WebView ();
