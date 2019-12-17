@@ -7,7 +7,7 @@ const GLib = imports.gi.GLib;
 const Gtk = imports.gi.Gtk;
 const Webkit = imports.gi.WebKit2;
 
-class HelloGNOME {
+class Screen {
 
   // Create the application itself
   constructor() {
@@ -57,5 +57,5 @@ class HelloGNOME {
   };
 
   // Run the application
-  let app = new HelloGNOME ();
+  let app = new Screen ();
   app.application.run (ARGV);
