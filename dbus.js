@@ -39,9 +39,11 @@ let idleMonitorProxy = new IdleMonitorProxy(
     '/org/gnome/Mutter/IdleMonitor/Core'
 )
 
-let callback = function(proxy) { log('idle') }
+idleMonitorProxy.connectSignal('WatchFired', (proxy) => {
+  log('idle')
+});
 
-idleMonitorProxy.AddIdleWatchRemote(3000, callback)
+idleMonitorProxy.AddIdleWatchSync(3000)
 
 Mainloop.timeout_add(3000, () => { log(idleMonitorProxy.GetIdletimeSync()) }, null)
 
