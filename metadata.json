@@ -3,5 +3,7 @@
   "name": "Screensaver Dashboard",
   "description": "A custom screensaver with dashboard capabilities",
   "version": 1,
-  "shell-version": [ "3.34.1" ]
+  "shell-version": [
+    "3.34"
+  ]
 }
