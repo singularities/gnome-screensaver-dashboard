@@ -2,7 +2,7 @@
 
 // This is a handy import we'll use to grab our extension's object
 const ExtensionUtils = imports.misc.extensionUtils;
-const Me = ExtensionUtils.getCurrentExtension();
+const Extension = ExtensionUtils.getCurrentExtension();
 
 // This function is called once when your extension is loaded, not enabled. This
 // is a good time to setup translations or anything else you only do once.
@@ -10,7 +10,7 @@ const Me = ExtensionUtils.getCurrentExtension();
 // You MUST NOT make any changes to GNOME Shell, connect any signals or add any
 // MainLoop sources here.
 function init() {
-    log(`initializing ${Me.metadata.name} version ${Me.metadata.version}`);
+    log(`initializing ${Extension.metadata.name} version ${Extension.metadata.version}`);
 }
 
 // This function could be called after your extension is enabled, which could
@@ -19,7 +19,7 @@ function init() {
 // This is when you setup any UI for your extension, change existing widgets,
 // connect signals or modify GNOME Shell's behaviour.
 function enable() {
-    log(`enabling ${Me.metadata.name} version ${Me.metadata.version}`);
+    log(`enabling ${Extension.metadata.name} version ${Extension.metadata.version}`);
 }
 
 // This function could be called after your extension is uninstalled, disabled
@@ -28,5 +28,5 @@ function enable() {
 // Anything you created, modifed or setup in enable() MUST be undone here. Not
 // doing so is the most common reason extensions are rejected during review!
 function disable() {
-    log(`disabling ${Me.metadata.name} version ${Me.metadata.version}`);
+    log(`disabling ${Extension.metadata.name} version ${Extension.metadata.version}`);
 }
