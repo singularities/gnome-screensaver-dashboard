@@ -42,7 +42,7 @@ class Screen {
 
       // Put the web app into the webview
       this._webView.load_uri (GLib.filename_to_uri (GLib.get_current_dir() +
-      "/screen.html", null));
+      "/dashboard.html", null));
 
       // Put the webview into the window
       this._window.add (this._webView);
