@@ -4,7 +4,7 @@ const GLib = imports.gi.GLib
 
 const loop = new GLib.MainLoop(null, false);
 
-const IdleTime = 1000 * 60 * 4
+const IdleTime = 1000 * 4
 
 // This the D-Bus interface as XML
 const IdleMonitorInterface = '<node>\
