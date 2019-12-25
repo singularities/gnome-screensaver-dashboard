@@ -4,7 +4,7 @@ const GLib = imports.gi.GLib
 
 const loop = new GLib.MainLoop(null, false);
 
-
+const IdleTime = 1000 * 60 * 4
 
 // This the D-Bus interface as XML
 const IdleMonitorInterface = '<node>\
@@ -39,12 +39,11 @@ let idleMonitorProxy = new IdleMonitorProxy(
     '/org/gnome/Mutter/IdleMonitor/Core'
 )
 
-idleMonitorProxy.connectSignal('WatchFired', (proxy) => {
-  log('idle')
-});
+function idleMonitor(callback) {
+  idleMonitorProxy.connectSignal('WatchFired', callback)
+  idleMonitorProxy.AddIdleWatchSync(IdleTime)
+}
 
-idleMonitorProxy.AddIdleWatchSync(3000)
+// Mainloop.timeout_add(3000, () => { log(idleMonitorProxy.GetIdletimeSync()) }, null)
 
-Mainloop.timeout_add(3000, () => { log(idleMonitorProxy.GetIdletimeSync()) }, null)
-
-loop.run()
+// loop.run()
