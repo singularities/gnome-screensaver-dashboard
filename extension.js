@@ -4,6 +4,8 @@
 const ExtensionUtils = imports.misc.extensionUtils;
 const Extension = ExtensionUtils.getCurrentExtension();
 
+const idleMonitor = Extension.imports.idleMonitor
+
 class ScreensaverDashboard {
   constructor() {
   }
@@ -14,6 +16,8 @@ class ScreensaverDashboard {
   // connect signals or modify GNOME Shell's behaviour.
   enable() {
     log(`enabling ${Extension.metadata.name} version ${Extension.metadata.version}`);
+
+    idleMonitor.idleMonitor(() => { log('idle')})
   }
 
   // This function could be called after your extension is uninstalled, disabled
