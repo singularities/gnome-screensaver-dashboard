@@ -17,7 +17,7 @@ class ScreensaverDashboard {
   enable() {
     log(`enabling ${Extension.metadata.name} version ${Extension.metadata.version}`);
 
-    idleMonitor.idleMonitor(() => { log('idle')})
+    idleMonitor.subscribe(() => { log('idle')})
   }
 
   // This function could be called after your extension is uninstalled, disabled

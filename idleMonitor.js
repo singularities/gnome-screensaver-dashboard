@@ -39,7 +39,7 @@ let idleMonitorProxy = new IdleMonitorProxy(
     '/org/gnome/Mutter/IdleMonitor/Core'
 )
 
-function idleMonitor(callback) {
+function subscribe(callback) {
   idleMonitorProxy.connectSignal('WatchFired', callback)
   idleMonitorProxy.AddIdleWatchSync(IdleTime)
 }
