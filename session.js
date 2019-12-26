@@ -1,4 +1,3 @@
-const Mainloop = imports.mainloop
 const Gio = imports.gi.Gio
 
 const IdleFlag = 8
