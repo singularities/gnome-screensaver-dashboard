@@ -4,7 +4,7 @@
 const ExtensionUtils = imports.misc.extensionUtils;
 const Extension = ExtensionUtils.getCurrentExtension();
 
-const idleMonitor = Extension.imports.idleMonitor
+const idleMonitor = Extension.imports.lib.idleMonitor
 
 class ScreensaverDashboard {
   constructor() {
