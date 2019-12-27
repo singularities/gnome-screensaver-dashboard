@@ -1,10 +1,13 @@
 const Mainloop = imports.mainloop
 const Gio = imports.gi.Gio
 const GLib = imports.gi.GLib
+const ExtensionUtils = imports.misc.extensionUtils;
+const Extension = ExtensionUtils.getCurrentExtension();
+const DBus = Extension.imports.dbus
 
 const loop = new GLib.MainLoop(null, false);
 
-const IdleTime = 1000 * 4
+const IdleTime = 1000 * 10
 
 // This the D-Bus interface as XML
 const IdleMonitorInterface = '<node>\
@@ -40,8 +43,16 @@ let idleMonitorProxy = new IdleMonitorProxy(
 )
 
 function subscribe(callback) {
-  idleMonitorProxy.connectSignal('WatchFired', callback)
-  idleMonitorProxy.AddIdleWatchSync(IdleTime)
+  DBus.subscribe((_proxy, _dbus, name) => {
+    if (name != 'org.gnome.Mutter.IdleMonitor') {
+      return
+    }
+
+    idleMonitorProxy.connectSignal('WatchFired', callback)
+    idleMonitorProxy.AddIdleWatchRemote(IdleTime, () => {
+      log('subscribed to idle monitor')
+    })
+  })
 }
 
 // Mainloop.timeout_add(3000, () => { log(idleMonitorProxy.GetIdletimeSync()) }, null)
