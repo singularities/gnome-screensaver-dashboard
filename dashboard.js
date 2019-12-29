@@ -1,5 +1,6 @@
 const Main = imports.ui.main
 const St = imports.gi.St
+const Tweener = imports.ui.tweener
 
 class Dashboard {
   constructor() {
@@ -28,10 +29,33 @@ class Dashboard {
   }
 
   show() {
+    this.container.opacity = 0
+
     Main.uiGroup.add_actor(this.container)
+
+    Tweener.addTween(
+      this.container,
+      {
+        opacity: 255,
+        time: 2,
+        transition: 'easeOutQuad',
+      }
+    )
   }
 
   hide() {
+    Tweener.addTween(
+      this.container,
+      {
+        opacity: 0,
+        time: 0.5,
+        transition: 'easeOutQuad',
+        onComplete: this.remove.bind(this)
+      }
+    )
+  }
+
+  remove() {
     Main.uiGroup.remove_actor(this.container)
   }
 }
