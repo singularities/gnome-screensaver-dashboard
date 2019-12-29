@@ -46,7 +46,7 @@ class Dashboard {
       this.container,
       {
         opacity: 0,
-        time: 0.5,
+        time: 0.3,
         transition: 'easeOutQuad',
         onComplete: this.remove.bind(this)
       }
