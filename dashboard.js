@@ -10,9 +10,7 @@ class Dashboard {
   build() {
     this.container = new St.Bin({
       style_class: 'container',
-      reactive: true,
-      x_fill: true,
-      y_fill: true
+      reactive: true
     })
 
     let layout = new St.BoxLayout({vertical: true})
