@@ -1,1 +1,7 @@
 /* Add your custom extension styling here */
+
+.container {
+  background-color: #000;
+  width: 1920px;
+  height: 1080px;
+}

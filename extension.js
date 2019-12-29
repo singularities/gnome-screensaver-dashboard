@@ -5,6 +5,7 @@ const ExtensionUtils = imports.misc.extensionUtils;
 const Extension = ExtensionUtils.getCurrentExtension();
 
 const idleMonitor = Extension.imports.lib.idleMonitor
+const Dashboard = Extension.imports.dashboard.Dashboard
 
 class ScreensaverDashboard {
   constructor() {
@@ -17,7 +18,11 @@ class ScreensaverDashboard {
   enable() {
     log(`enabling ${Extension.metadata.name} version ${Extension.metadata.version}`);
 
-    idleMonitor.subscribe(() => { log('idle')})
+    idleMonitor.subscribe(() => {
+      log('idle')
+
+      this.show()
+    })
   }
 
   // This function could be called after your extension is uninstalled, disabled
@@ -27,6 +32,14 @@ class ScreensaverDashboard {
   // doing so is the most common reason extensions are rejected during review!
   disable() {
     log(`disabling ${Extension.metadata.name} version ${Extension.metadata.version}`);
+  }
+
+  show() {
+    if (!this.dashboard) {
+      this.dashboard = new Dashboard()
+    }
+
+    this.dashboard.show()
   }
 }
 
