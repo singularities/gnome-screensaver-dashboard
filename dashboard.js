@@ -24,6 +24,7 @@ class Dashboard {
     //
 
     this.container.connect('button-press-event', this.hide.bind(this))
+    this.container.connect('touch-begin-event', this.hide.bind(this))
   }
 
   show() {
