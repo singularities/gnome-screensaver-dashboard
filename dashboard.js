@@ -2,6 +2,10 @@ const Main = imports.ui.main
 const St = imports.gi.St
 const Tweener = imports.ui.tweener
 
+// https://developer.gnome.org/clutter/stable/clutter-Events.html#ClutterEventType
+// CLUTTER_BUTTON_PRESS and CLUTTER_TOUCH_END (touch events may start with begin or update)
+const HideEvents = [6, 15]
+
 class Dashboard {
   constructor() {
     this.build()
@@ -23,8 +27,11 @@ class Dashboard {
     // layout.add_actor(text2)
     //
 
-    this.container.connect('button-press-event', this.hide.bind(this))
-    this.container.connect('touch-begin-event', this.hide.bind(this))
+    // We should connect to `button-press-event` and `touch-event` signals
+    // https://developer.gnome.org/clutter/stable/ClutterActor.html#ClutterActor.signals
+    // but it touch-event is not available
+    // Maybe because of the version?
+    this.container.connect('event', this.hide.bind(this))
   }
 
   show() {
@@ -42,7 +49,12 @@ class Dashboard {
     )
   }
 
-  hide() {
+  hide(_container, event) {
+    log('hide:' + event.type());
+    if (!HideEvents.includes(event.type())) {
+      return
+    }
+
     Tweener.addTween(
       this.container,
       {
