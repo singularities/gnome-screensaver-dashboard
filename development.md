@@ -1,3 +1,4 @@
+* [GNOME Extension StepByStepTutorial](https://wiki.gnome.org/Projects/GnomeShell/Extensions/StepByStepTutorial)
 * [Gjs docs](https://gjs-docs.gnome.org/)
 * [Example on dbus client from gjs](https://wiki.gnome.org/Gjs/Examples/DBusClient)
 * [IdleMonitor xml](https://gitlab.gnome.org/GNOME/mutter/blob/master/src/org.gnome.Mutter.IdleMonitor.xml)
