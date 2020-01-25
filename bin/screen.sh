@@ -4,7 +4,7 @@ export DISPLAY=:0
 export XDG_RUNTIME_DIR=/run/user/$UID
 
 if [ $1 = "on" ]; then
-  # Don't turn off the screen if user is iddle
+  # Don't turn off the screen if user is idle
   gsettings set org.gnome.desktop.session idle-delay 0
   # Remove screen saver
   dbus-send --session --dest=org.gnome.ScreenSaver --type=method_call --print-reply /org/gnome/ScreenSaver org.gnome.ScreenSaver.SetActive boolean:false
