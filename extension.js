@@ -5,7 +5,6 @@ const ExtensionUtils = imports.misc.extensionUtils;
 const Extension = ExtensionUtils.getCurrentExtension();
 
 const idleMonitor = Extension.imports.lib.idleMonitor
-const Listener = Extension.imports.lib.listener.Listener
 const DbusServer = Extension.imports.lib.dbusServer.DbusServer
 const Dashboard = Extension.imports.dashboard.Dashboard
 
@@ -20,11 +19,7 @@ class ScreensaverDashboard {
   enable() {
     log(`enabling ${Extension.metadata.name} version ${Extension.metadata.version}`);
 
-    let listener = new Listener()
-    let dbusServer = new DbusServer({
-      sleep: () => { log('sleep') },
-      wakeup: () => { log('wakeup') }
-    })
+    let dbusServer = new DbusServer()
 
     idleMonitor.subscribe(() => {
       log('idle')
