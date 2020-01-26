@@ -25,8 +25,6 @@ class ScreensaverDashboard {
       log('idle')
 
       this.show()
-
-      log(listener.currentValue())
     })
   }
 
