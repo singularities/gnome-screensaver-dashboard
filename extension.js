@@ -5,6 +5,7 @@ const ExtensionUtils = imports.misc.extensionUtils;
 const Extension = ExtensionUtils.getCurrentExtension();
 
 const idleMonitor = Extension.imports.lib.idleMonitor
+const Listener = Extension.imports.lib.listener.Listener
 const Dashboard = Extension.imports.dashboard.Dashboard
 
 class ScreensaverDashboard {
@@ -18,10 +19,15 @@ class ScreensaverDashboard {
   enable() {
     log(`enabling ${Extension.metadata.name} version ${Extension.metadata.version}`);
 
+    let listener = new Listener()
+
+
     idleMonitor.subscribe(() => {
       log('idle')
 
       this.show()
+
+      log(listener.currentValue())
     })
   }
 
