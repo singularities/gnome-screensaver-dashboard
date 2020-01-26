@@ -21,7 +21,10 @@ class ScreensaverDashboard {
     log(`enabling ${Extension.metadata.name} version ${Extension.metadata.version}`);
 
     let listener = new Listener()
-    let dbusServer = new DbusServer()
+    let dbusServer = new DbusServer({
+      sleep: () => { log('sleep') },
+      wakeup: () => { log('wakeup') }
+    })
 
     idleMonitor.subscribe(() => {
       log('idle')
