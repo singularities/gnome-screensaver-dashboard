@@ -10,7 +10,7 @@ const Dashboard = Extension.imports.dashboard.Dashboard
 
 class ScreensaverDashboard {
   constructor() {
-    this. dbusServer = new DbusServer()
+    this.dbusServer = new DbusServer()
 
     idleMonitor.subscribe(() => {
       log('idle')
