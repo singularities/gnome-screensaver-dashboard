@@ -10,6 +10,13 @@ const Dashboard = Extension.imports.dashboard.Dashboard
 
 class ScreensaverDashboard {
   constructor() {
+    this. dbusServer = new DbusServer()
+
+    idleMonitor.subscribe(() => {
+      log('idle')
+
+      this.show()
+    })
   }
   // This function could be called after your extension is enabled, which could
   // be done from GNOME Tweaks, when you log in or when the screen is unlocked.
@@ -19,13 +26,6 @@ class ScreensaverDashboard {
   enable() {
     log(`enabling ${Extension.metadata.name} version ${Extension.metadata.version}`);
 
-    let dbusServer = new DbusServer()
-
-    idleMonitor.subscribe(() => {
-      log('idle')
-
-      this.show()
-    })
   }
 
   // This function could be called after your extension is uninstalled, disabled
