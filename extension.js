@@ -6,7 +6,7 @@ const Extension = ExtensionUtils.getCurrentExtension();
 
 const idleMonitor = Extension.imports.lib.idleMonitor
 const DbusServer = Extension.imports.lib.dbusServer.DbusServer
-const Dashboard = Extension.imports.dashboard.Dashboard
+const Dashboard = Extension.imports.lib.dashboard.Dashboard
 
 class ScreensaverDashboard {
   constructor() {
