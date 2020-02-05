@@ -13,8 +13,6 @@ class ScreensaverDashboard {
     this.dbusServer = new DbusServer()
 
     idleMonitor.subscribe(() => {
-      log('idle')
-
       this.show()
     })
   }
