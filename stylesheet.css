@@ -6,3 +6,23 @@
   height: 1080px;
   cursor: none;
 }
+
+.clock {
+  background-color: #000;
+  text-align: center;
+}
+
+.clock-hour {
+  background-color: #000;
+  border-color: #000;
+  text-align: center;
+  font-size: 4em;
+  color: #777;
+}
+
+.clock-date {
+  background-color: #000;
+  border-color: #000;
+  text-align: center;
+  color: #777;
+}
