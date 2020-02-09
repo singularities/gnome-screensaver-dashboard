@@ -5,12 +5,12 @@ const ExtensionUtils = imports.misc.extensionUtils;
 const Extension = ExtensionUtils.getCurrentExtension();
 
 const idleMonitor = Extension.imports.lib.idleMonitor
-const DbusServer = Extension.imports.lib.dbusServer.DbusServer
+const ListenerDbusServer = Extension.imports.lib.listenerDbusServer.ListenerDbusServer
 const Dashboard = Extension.imports.lib.dashboard.Dashboard
 
 class ScreensaverDashboard {
   constructor() {
-    this.dbusServer = new DbusServer()
+    this.listenerDbusServer = new ListenerDbusServer()
 
     idleMonitor.subscribe(() => {
       this.show()
