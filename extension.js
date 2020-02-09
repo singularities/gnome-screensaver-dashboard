@@ -4,7 +4,7 @@
 const ExtensionUtils = imports.misc.extensionUtils;
 const Extension = ExtensionUtils.getCurrentExtension();
 
-const idleMonitor = Extension.imports.lib.idleMonitor
+const IdleMonitor = Extension.imports.lib.idleMonitor.IdleMonitor
 const ListenerDbusServer = Extension.imports.lib.listenerDbusServer.ListenerDbusServer
 const Dashboard = Extension.imports.lib.dashboard.Dashboard
 
@@ -12,7 +12,7 @@ class ScreensaverDashboard {
   constructor() {
     this.listenerDbusServer = new ListenerDbusServer()
 
-    idleMonitor.subscribe(() => {
+    IdleMonitor.subscribeIdle(() => {
       this.show()
     })
   }
