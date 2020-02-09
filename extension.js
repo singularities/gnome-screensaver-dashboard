@@ -23,7 +23,6 @@ class ScreensaverDashboard {
   // connect signals or modify GNOME Shell's behaviour.
   enable() {
     log(`enabling ${Extension.metadata.name} version ${Extension.metadata.version}`);
-
   }
 
   // This function could be called after your extension is uninstalled, disabled
