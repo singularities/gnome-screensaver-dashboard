@@ -12,7 +12,7 @@ class ScreensaverDashboard {
   constructor() {
     this.listenerDbusServer = new ListenerDbusServer()
 
-    IdleMonitor.subscribeIdle(() => {
+    IdleMonitor.subscribe('idle', () => {
       this.show()
     })
   }
