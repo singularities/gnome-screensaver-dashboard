@@ -39,6 +39,8 @@ class ScreensaverDashboard {
       this.dashboard = new Dashboard()
     }
 
+    log('dashboard show')
+
     this.dashboard.show()
   }
 }
