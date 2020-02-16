@@ -4,17 +4,13 @@
 const ExtensionUtils = imports.misc.extensionUtils;
 const Extension = ExtensionUtils.getCurrentExtension();
 
-const IdleMonitor = Extension.imports.lib.idleMonitor.IdleMonitor
 const ListenerDbusServer = Extension.imports.lib.listenerDbusServer.ListenerDbusServer
 const Dashboard = Extension.imports.lib.dashboard.Dashboard
 
 class ScreensaverDashboard {
   constructor() {
     this.listenerDbusServer = new ListenerDbusServer()
-
-    IdleMonitor.subscribe('idle', () => {
-      this.show()
-    })
+    this.dashboard = new Dashboard()
   }
   // This function could be called after your extension is enabled, which could
   // be done from GNOME Tweaks, when you log in or when the screen is unlocked.
@@ -32,16 +28,6 @@ class ScreensaverDashboard {
   // doing so is the most common reason extensions are rejected during review!
   disable() {
     log(`disabling ${Extension.metadata.name} version ${Extension.metadata.version}`);
-  }
-
-  show() {
-    if (!this.dashboard) {
-      this.dashboard = new Dashboard()
-    }
-
-    log('dashboard show')
-
-    this.dashboard.show()
   }
 }
 
